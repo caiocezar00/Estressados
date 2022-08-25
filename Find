@@ -3,10 +3,10 @@
 using namespace std;
 
 bool existe(vector <int> vet, int valor){
-    for(int el : vet)
-        if(el == valor)
-            return true;
-        return false;
+    for(auto el : vet){
+        if(el == valor)  return true;
+}
+    return false;
 }
 int index_of(vector <int> vet, int valor){
     for(int i = 0; i < (int) vet.size(); i++)
@@ -14,7 +14,7 @@ int index_of(vector <int> vet, int valor){
             return i;
         return -1;
 }
-int find_if(vector <int> vet, int valor){
+int find_if(vector <int> vet){
     for(int i = 0; i < (int) vet.size(); i++)
         if(vet[i] > 0)
             return i;
@@ -30,20 +30,23 @@ int min_element(vector <int> vet){
 int find_min_if(vector <int> vet){
     int pos = -1;
     for(int i = 0; i < (int) vet.size(); i++)
-        if(vet[i] > 0 && (vet[pos] > vet[i] || pos = -1))
+        if(vet[i] > 0)
             pos = i;
     return pos;
 }
 int main(){
-    int numero, tamanho;
-    cin >> numero >> tamanho;
-    vector<int>vet[tamanho];
+    int tamanho, numero;
+    
+    cin >> tamanho >> numero;
+    
+    vector<int>vetor(tamanho);
+    
     for(int i = 0; i < tamanho; i++){
-        cin >> vet[i];
+        cin >> vetor[i];
     }
-    cout << "qual posição aparece X na fila pela primeira vez?" << index_of(vet,valor);
-    cout << "existe algo na fila" << existe(vet, valor);
-    cout << "qual a posição do primeiro homem da fila?" << find_if(vet, valor);
-    cout << "qual a posição do menor valor da lista?" << min_element(vet);
-    cout << " qual a posição do homem mais calmo?" << find_min_if(vet);
+    cout << (index_of(vetor,numero) ? "sim" : "nao");
+    cout << (existe(vet, numero) ? "sim" : "não");
+//     cout << "qual a posição do primeiro homem da fila?" << find_if(vet);
+//     cout << "qual a posição do menor valor da lista?" << min_element(vet);
+//     cout << " qual a posição do homem mais calmo?" << find_min_if(vet);
 }
